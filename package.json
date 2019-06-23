@@ -4,6 +4,7 @@
   "description": "Discord Bot for DnD",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/Rishiswaz/DnD-Discord-Bot/issues"
   },
-  "homepage": "https://github.com/Rishiswaz/DnD-Discord-Bot#readme"
+  "homepage": "https://github.com/Rishiswaz/DnD-Discord-Bot#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
 }

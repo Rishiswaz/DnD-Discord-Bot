@@ -6,12 +6,12 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  if (msg.content === '!roll *d*') {
-    msg.reply(random);
+  if (msg.content === '!roll') {
+    msg.reply(random());
   }
 });
 
-function random {
+function random() {
   d= Math.random() * (20 - 1) + 1;
   return parseInt(d, 10);
 }
