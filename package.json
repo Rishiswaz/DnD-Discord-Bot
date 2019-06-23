@@ -1,0 +1,24 @@
+{
+  "name": "dnddiscordbot",
+  "version": "1.0.0",
+  "description": "Discord Bot for DnD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rishiswaz/DnD-Discord-Bot.git"
+  },
+  "keywords": [
+    "who",
+    "cares",
+    "nothing"
+  ],
+  "author": "One Nipple Nihal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rishiswaz/DnD-Discord-Bot/issues"
+  },
+  "homepage": "https://github.com/Rishiswaz/DnD-Discord-Bot#readme"
+}
