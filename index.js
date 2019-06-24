@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const Dice = require('./Dice.js');
+var fs = require('fs');
+const token = fs.readFileSync('token.txt')
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -15,4 +17,4 @@ client.on('message', msg => {
 
 });
 
-client.login('NTcwNzEzOTc3ODM1ODgwNDQ4.XRAFsA.jQI2_h2tS1PbT36jbshc_gSMdqU');
+client.login(token);
