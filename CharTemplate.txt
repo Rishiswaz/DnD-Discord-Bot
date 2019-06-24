@@ -1,0 +1,104 @@
+package com.Rishiswaz.data;
+
+import com.Rishiswaz.util.Dice;
+import org.jetbrains.annotations.Contract;
+
+import java.io.Serializable;
+import java.util.Collections;
+import java.util.*;
+
+public class PlayerChar implements Serializable {
+    int[] stats = new int[]{0,0,0,0,0,0}; // Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma.
+    int[] bonus = new int[]{0,0,0,0,0,0}; // Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma.
+    int profBonus = 2, aromorClass, init, speed, currenthitpoints, temphitpoints;
+    String[] savingThrows = new String[]{"","",""};
+    String Class, Background, CharName, PlayerName ="Rishiswaz", Race, Alignment, exp, hitdie, statString;
+    Scanner scan = new Scanner(System.in);
+
+    public PlayerChar() {
+        this.fillStats();
+    }
+    public PlayerChar(String charNameIn,String classIn, String backgroundIn, String RaceIn, String AlignmentIn, String expIn, String hitdieIn) {
+        this.CharName=charNameIn;
+        this.Background=backgroundIn;
+        this.Class= classIn;
+        this.Race = RaceIn;
+        this.Alignment=AlignmentIn;
+        this.exp =expIn;
+        this.hitdie=hitdieIn;
+        this.fillStats();
+    }
+
+    private void fillStats(){
+        String temp="";
+        Vector<Integer> tempRoll;
+        int pointSum=0;
+        while(pointSum<72) {
+            for(int j =0; j<6; j++){
+                this.stats[j]=0;
+            }
+            pointSum=0;
+            for (int i = 0; i < 6; i++) {
+                tempRoll = Dice.roll("4d6");
+                Collections.sort(tempRoll);
+                tempRoll.remove(tempRoll.elementAt(0));
+                tempRoll.trimToSize();
+                for (int j = 0; j < tempRoll.size(); j++) {
+                    this.stats[i] += tempRoll.elementAt(j);
+                }
+                pointSum += this.stats[i];
+            }
+        }
+        temp="";
+        for(int i=0; i<6; i++) this.bonus[i]= this.calculateBonus(this.stats[i]);
+        for(int i=0; i<6; i++) {
+            switch (i){
+                case 0:
+                    temp = temp.concat("Strength has a value of "+this.stats[i]+" with an ability modifier of "+this.bonus[i]+System.lineSeparator());
+                    break;
+                case 1:
+                    temp = temp.concat("Dexterity has a value of "+this.stats[i]+" with an ability modifier of "+this.bonus[i]+System.lineSeparator());
+                    break;
+                case 2:
+                    temp = temp.concat("Constitution has a value of "+this.stats[i]+" with an ability modifier of "+this.bonus[i]+System.lineSeparator());
+                    break;
+                case 3:
+                    temp = temp.concat("Intelligence has a value of "+this.stats[i]+" with an ability modifier of "+this.bonus[i]+System.lineSeparator());
+                    break;
+                case 4:
+                    temp = temp.concat("Wisdom has a value of "+this.stats[i]+" with an ability modifier of "+this.bonus[i]+System.lineSeparator());
+                    break;
+                case 5:
+                    temp = temp.concat("Charisma has a value of "+this.stats[i]+" with an ability modifier of "+this.bonus[i]+System.lineSeparator());
+                    break;
+                default:
+                    temp = temp.concat("Error in Stat input"+System.lineSeparator());
+                    break;
+            }
+        }
+        this.statString=temp;
+        this.aromorClass=10+this.bonus[2]+this.bonus[3];
+        this.init=0;
+        this.speed=30;
+        this.currenthitpoints=12+this.bonus[3];
+        this.temphitpoints=this.currenthitpoints;
+    }
+    @Contract(pure = true)
+    private int calculateBonus(int input){
+        int retVal;
+        double temp =input;
+        temp -=10;
+        temp /= 2;
+        retVal = (int) temp;
+        return retVal;
+    }
+
+    @Override
+    public String toString(){
+        String retVal;
+        retVal=("Character Name: "+this.CharName+System.lineSeparator()+"Description: "+this.Alignment+" "+this.Race+" "+this.Background+" "+this.Class+System.lineSeparator()
+        +"Stats: "+System.lineSeparator()+this.statString);
+        return (retVal);
+    }
+}
+
