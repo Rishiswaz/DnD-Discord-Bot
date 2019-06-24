@@ -1,20 +1,16 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const Dice = require('Dice.js');
+const Dice = require('./Dice.js');
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
 client.on('message', msg => {
-	var words = msg.toLowerCase().match(/\S+/g) || [];
+	var words = msg.content.toLowerCase().match(/\S+/g) || [];
 
-	if (words.length > 0 && words[0] == '!roll') {
-		if (words.length != 2) {
-			msg.reply("Invalid command: expected !roll <count>d<value>");
-		} else {
-			msg.reply(Dice.roll(words[1]));
-		}
+	if (words.length == 2 && words[0] == '!roll') {
+		msg.reply(Dice.roll(words[1]).value);
 	}
 
 });
