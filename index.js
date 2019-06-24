@@ -16,7 +16,6 @@ client.on('message', msg => {
 	if (words.length == 2 && words[0] == '!roll') {
 		msg.reply(Dice.parse(words[1]).value);
 	}
-
 });
 
 client.login(token);

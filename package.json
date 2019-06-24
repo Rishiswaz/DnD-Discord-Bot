@@ -24,6 +24,8 @@
   "homepage": "https://github.com/Rishiswaz/DnD-Discord-Bot#readme",
   "dependencies": {
     "discord.js": "^11.5.1",
+    "firebase-admin": "^8.2.0",
+    "node-cache": "^4.2.0",
     "roll-parser": "^2.3.2"
   }
 }
