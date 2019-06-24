@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/Rishiswaz/DnD-Discord-Bot#readme",
   "dependencies": {
-    "discord.js": "^11.5.1"
+    "discord.js": "^11.5.1",
+    "roll-parser": "^2.3.2"
   }
 }
