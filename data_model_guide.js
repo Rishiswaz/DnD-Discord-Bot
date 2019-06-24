@@ -18,11 +18,11 @@ var character = {
 
 	},
 	stats: {
-		strength: 10,
-		dexterity: 10,
-		constitution: 10,
-		intelligence: 10,
-		wisdom: 10,
+		strength: 17,
+		dexterity: 13,
+		constitution: 11,
+		intelligence: 8,
+		wisdom: 6,
 		charisma: 10,
 	},
 	bonuses: {
@@ -46,5 +46,20 @@ var character = {
 		armor_desc: " ",
 	}
 
+}
 
+var apply_bonus = function(){
+		Object.keys(stats).forEach(key => {
+			this.character.bonuses.getElementsByTagName(key) = find_bonus(key);
+			console.log(key +' '+find_bonus(key))
+			return 1;
+		});
+	}
+
+var find_bonus = function(input){
+	var retVal = this.character.stats.getElementsByTagName(input);
+	retVal -= 10;
+	retVal /= 2;
+	retVal = Math.floor(retVal);
+	return retVal
 }
