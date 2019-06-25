@@ -30,3 +30,4 @@ reactions	string
 legendary_actions	[…] string
 special_abilities	[…] string
 document_slug	 string
+ayy lmao
