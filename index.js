@@ -14,12 +14,16 @@ client.on('message', msg => {
 
 	var words = msg.content.toLowerCase().match(/\S+/g) || [];
 
-	if (words.length == 2 && words[0] == '!roll') {
-		msg.reply(Dice.parse(words[1]).value);
+	if (msg.content.startsWith(Dice.prefix)) {
+		Dice.replyWithRoll(msg);
 	}
+<<<<<<< HEAD
 	else if (words == '!test'){
 		msg.reply(data_model_guide.apply_bonus());
 	}
+=======
+
+>>>>>>> 2009db58018d328f13c99cbd5391fcdd562afaaf
 });
 
 client.login(token);
