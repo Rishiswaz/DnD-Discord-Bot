@@ -13,9 +13,10 @@ client.on('message', msg => {
 
 	var words = msg.content.toLowerCase().match(/\S+/g) || [];
 
-	if (words.length == 2 && words[0] == '!roll') {
-		msg.reply(Dice.parse(words[1]).value);
+	if (msg.content.startsWith(Dice.prefix)) {
+		Dice.replyWithRoll(msg);
 	}
+
 });
 
 client.login(token);
